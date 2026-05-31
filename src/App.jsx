@@ -103,7 +103,7 @@ const navLinks = [
   { label: "Servicios", href: "#servicios" },
   { label: "Sobre mí", href: "#sobre-mi" },
   { label: "Tarifas", href: "#tarifas" },
-  { label: "Reserva", href: "#reserva" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 function SectionTitle({ eyebrow, title, text }) {
@@ -367,61 +367,16 @@ function App() {
         </div>
       </section>
 
-      <section id="reserva" className="bg-[#F3FAF9] py-20">
+      <section id="contacto" className="bg-[#F3FAF9] py-20">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <SectionTitle
-            eyebrow="Reserva online"
-            title="Elige la sesión que necesitas"
-            text="Puedes reservar una valoración inicial si es la primera vez o una sesión de seguimiento si ya habéis empezado a trabajar con María."
-          />
-
-          <div className="grid gap-6 md:grid-cols-2">
-            <article className="rounded-3xl bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#5AA59D] text-white">
-                <CalendarDays size={30} />
-              </div>
-              <h3 className="text-2xl font-black text-[#1D2D3A]">Valoración inicial</h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                Primera sesión para conocer a tu perro, entender la situación y definir un plan de trabajo personalizado.
-              </p>
-              <p className="mt-5 text-sm font-bold uppercase tracking-[0.18em] text-[#5AA59D]">90 min · 45 €</p>
-              <a
-                href={VALORACION_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-7 inline-flex w-full justify-center rounded-xl bg-[#5AA59D] px-6 py-4 font-bold text-white transition hover:bg-[#4D968E] sm:w-auto"
-              >
-                Reservar valoración inicial
-              </a>
-            </article>
-
-            <article className="rounded-3xl bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#5AA59D] text-white">
-                <PawPrint size={30} />
-              </div>
-              <h3 className="text-2xl font-black text-[#1D2D3A]">Sesión de seguimiento</h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                Sesión individual para continuar trabajando los objetivos establecidos durante la valoración inicial.
-              </p>
-              <p className="mt-5 text-sm font-bold uppercase tracking-[0.18em] text-[#5AA59D]">60 min · 35 €</p>
-              <a
-                href={SEGUIMIENTO_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-7 inline-flex w-full justify-center rounded-xl bg-[#5AA59D] px-6 py-4 font-bold text-white transition hover:bg-[#4D968E] sm:w-auto"
-              >
-                Reservar seguimiento
-              </a>
-            </article>
-          </div>
-
-          <div className="mt-10 rounded-3xl bg-white p-8 shadow-sm md:flex md:items-center md:justify-between md:gap-8">
+          <div className="rounded-3xl bg-white p-8 shadow-sm md:flex md:items-center md:justify-between md:gap-8">
             <div>
-              <h3 className="text-2xl font-black text-[#1D2D3A]">¿Tienes dudas antes de reservar?</h3>
-              <p className="mt-3 leading-7 text-slate-600">
+              <p className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-[#5AA59D]"><MessageCircle size={18} /> Contacto</p>
+              <h2 className="text-4xl font-black tracking-tight text-[#1D2D3A]">¿Tienes dudas antes de reservar?</h2>
+              <p className="mt-4 max-w-2xl leading-8 text-slate-600">
                 Escríbenos por WhatsApp y te orientamos sobre qué tipo de sesión encaja mejor con tu caso.
               </p>
-              <div className="mt-5 space-y-3 text-slate-700">
+              <div className="mt-6 space-y-3 text-slate-700">
                 <p className="flex items-center gap-3"><MapPin className="text-[#5AA59D]" size={21} /> Algeciras y Campo de Gibraltar</p>
                 <p className="flex items-center gap-3"><Phone className="text-[#5AA59D]" size={21} /> 645 31 76 76</p>
                 <p className="flex items-center gap-3"><Mail className="text-[#5AA59D]" size={21} /> {EMAIL}</p>
@@ -431,7 +386,7 @@ function App() {
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#5AA59D] px-7 py-4 font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#4D968E] md:mt-0 md:w-auto"
+              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#5AA59D] px-7 py-4 font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#4D968E] md:mt-0 md:w-auto"
             >
               <MessageCircle size={20} /> Hablar por WhatsApp
             </a>
@@ -461,3 +416,4 @@ function App() {
 }
 
 export default App;
+
