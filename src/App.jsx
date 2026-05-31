@@ -19,7 +19,8 @@ import {
 const WHATSAPP_NUMBER = "34645317676";
 const INSTAGRAM_URL = "https://www.instagram.com/ariacanina24/";
 const EMAIL = "ariacanina24@gmail.com";
-const CALENDLY_URL = "https://calendly.com/ariacanina/sesion";
+const VALORACION_URL = "https://calendly.com/patricia-marquez-esteban/valoracion-inicial-ariacanina";
+const SEGUIMIENTO_URL = "https://calendly.com/patricia-marquez-esteban/sesion-de-seguimiento-ariacanina";
 
 const services = [
   {
@@ -50,24 +51,32 @@ const pricing = [
     duration: "90 min",
     price: "45 €",
     description: "Primera sesión para conocer al perro, analizar el caso y definir un plan de trabajo.",
+    button: "Reservar valoración inicial",
+    url: VALORACION_URL,
   },
   {
-    name: "Sesión individual",
+    name: "Sesión de seguimiento",
     duration: "60 min",
     price: "35 €",
-    description: "Sesión personalizada para trabajar objetivos concretos de educación o conducta.",
+    description: "Sesión individual para continuar trabajando los objetivos definidos en la valoración inicial.",
+    button: "Reservar seguimiento",
+    url: SEGUIMIENTO_URL,
   },
   {
     name: "Bono 4 sesiones",
     duration: "4 x 60 min",
     price: "125 €",
     description: "Ideal para avanzar con seguimiento y trabajar hábitos de forma progresiva.",
+    button: "Consultar bono",
+    url: null,
   },
   {
     name: "Bono 8 sesiones",
     duration: "8 x 60 min",
     price: "230 €",
     description: "Pensado para procesos más completos de educación, convivencia o conducta.",
+    button: "Consultar bono",
+    url: null,
   },
 ];
 
@@ -327,8 +336,13 @@ function App() {
                 <p className="mt-2 text-sm font-semibold text-slate-500">{plan.duration}</p>
                 <p className="mt-5 text-4xl font-black text-[#5AA59D]">{plan.price}</p>
                 <p className="mt-5 flex-1 leading-7 text-slate-600">{plan.description}</p>
-                <a href="#reserva" className="mt-6 inline-flex justify-center rounded-xl bg-[#5AA59D] px-5 py-3 font-bold text-white transition hover:bg-[#4D968E]">
-                  Reservar
+                <a
+                  href={plan.url || whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-6 inline-flex justify-center rounded-xl bg-[#5AA59D] px-5 py-3 font-bold text-white transition hover:bg-[#4D968E]"
+                >
+                  {plan.button}
                 </a>
               </article>
             ))}
@@ -354,43 +368,73 @@ function App() {
       </section>
 
       <section id="reserva" className="bg-[#F3FAF9] py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 md:grid-cols-[0.9fr_1.1fr] md:px-8">
-          <div>
-            <p className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-[0.2em] text-[#5AA59D]"><CalendarDays size={18} /> Reserva online</p>
-            <h2 className="text-4xl font-black tracking-tight text-[#1D2D3A]">Reserva tu primera sesión</h2>
-            <p className="mt-5 leading-8 text-slate-600">
-              Elige el día y la hora que mejor te venga. Después revisaremos el caso y confirmaremos los detalles de la sesión.
-            </p>
-            <div className="mt-8 space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-1 text-[#5AA59D]" size={22} />
-                <p><strong>Zona:</strong> Algeciras y Campo de Gibraltar</p>
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <SectionTitle
+            eyebrow="Reserva online"
+            title="Elige la sesión que necesitas"
+            text="Puedes reservar una valoración inicial si es la primera vez o una sesión de seguimiento si ya habéis empezado a trabajar con María."
+          />
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <article className="rounded-3xl bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#5AA59D] text-white">
+                <CalendarDays size={30} />
               </div>
-              <div className="flex items-start gap-3">
-                <Phone className="mt-1 text-[#5AA59D]" size={22} />
-                <p><strong>Teléfono:</strong> 645 31 76 76</p>
+              <h3 className="text-2xl font-black text-[#1D2D3A]">Valoración inicial</h3>
+              <p className="mt-3 leading-7 text-slate-600">
+                Primera sesión para conocer a tu perro, entender la situación y definir un plan de trabajo personalizado.
+              </p>
+              <p className="mt-5 text-sm font-bold uppercase tracking-[0.18em] text-[#5AA59D]">90 min · 45 €</p>
+              <a
+                href={VALORACION_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-7 inline-flex w-full justify-center rounded-xl bg-[#5AA59D] px-6 py-4 font-bold text-white transition hover:bg-[#4D968E] sm:w-auto"
+              >
+                Reservar valoración inicial
+              </a>
+            </article>
+
+            <article className="rounded-3xl bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#5AA59D] text-white">
+                <PawPrint size={30} />
               </div>
-              <div className="flex items-start gap-3">
-                <Mail className="mt-1 text-[#5AA59D]" size={22} />
-                <p><strong>Email:</strong> {EMAIL}</p>
-              </div>
-            </div>
-            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#5AA59D] px-7 py-4 font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#4D968E]">
-              <MessageCircle size={20} /> Hablar por WhatsApp
-            </a>
+              <h3 className="text-2xl font-black text-[#1D2D3A]">Sesión de seguimiento</h3>
+              <p className="mt-3 leading-7 text-slate-600">
+                Sesión individual para continuar trabajando los objetivos establecidos durante la valoración inicial.
+              </p>
+              <p className="mt-5 text-sm font-bold uppercase tracking-[0.18em] text-[#5AA59D]">60 min · 35 €</p>
+              <a
+                href={SEGUIMIENTO_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-7 inline-flex w-full justify-center rounded-xl bg-[#5AA59D] px-6 py-4 font-bold text-white transition hover:bg-[#4D968E] sm:w-auto"
+              >
+                Reservar seguimiento
+              </a>
+            </article>
           </div>
 
-          <div className="overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-4 shadow-sm">
-            <div className="flex min-h-[520px] flex-col items-center justify-center rounded-[1.5rem] bg-white bg-[radial-gradient(circle_at_top_right,_#DDEFEF,_transparent_35%)] p-8 text-center">
-              <CalendarDays className="mb-5 text-[#5AA59D]" size={54} />
-              <h3 className="text-2xl font-black text-[#1D2D3A]">Calendario de reservas</h3>
-              <p className="mt-4 max-w-md leading-7 text-slate-600">
-                Aquí integraremos el calendario real de Aria Canina con disponibilidad horaria mediante Calendly, TidyCal o Google Calendar.
+          <div className="mt-10 rounded-3xl bg-white p-8 shadow-sm md:flex md:items-center md:justify-between md:gap-8">
+            <div>
+              <h3 className="text-2xl font-black text-[#1D2D3A]">¿Tienes dudas antes de reservar?</h3>
+              <p className="mt-3 leading-7 text-slate-600">
+                Escríbenos por WhatsApp y te orientamos sobre qué tipo de sesión encaja mejor con tu caso.
               </p>
-              <a href={CALENDLY_URL} target="_blank" rel="noreferrer" className="mt-7 rounded-xl bg-[#5AA59D] px-7 py-4 font-bold text-white transition hover:bg-[#4D968E]">
-                Abrir calendario
-              </a>
+              <div className="mt-5 space-y-3 text-slate-700">
+                <p className="flex items-center gap-3"><MapPin className="text-[#5AA59D]" size={21} /> Algeciras y Campo de Gibraltar</p>
+                <p className="flex items-center gap-3"><Phone className="text-[#5AA59D]" size={21} /> 645 31 76 76</p>
+                <p className="flex items-center gap-3"><Mail className="text-[#5AA59D]" size={21} /> {EMAIL}</p>
+              </div>
             </div>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#5AA59D] px-7 py-4 font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#4D968E] md:mt-0 md:w-auto"
+            >
+              <MessageCircle size={20} /> Hablar por WhatsApp
+            </a>
           </div>
         </div>
       </section>
